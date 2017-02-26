@@ -1,0 +1,475 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SearchEnginee</name>
+    </assembly>
+    <members>
+        <member name="T:SearchEnginee.Doocument">
+            <summary>
+            This class models a document.
+            It contains the document id, the path to the document, and its rank value
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Doocument.#ctor(System.Int32,System.String)">
+            <summary>
+            This set/initializes the documents id and path
+            </summary>
+            <param name="id">document id number</param>
+            <param name="path">the path to the documents location</param>
+        </member>
+        <member name="M:SearchEnginee.Doocument.getID">
+            <summary>
+            This returns the documents id number
+            </summary>
+            <returns>document id number</returns>
+        </member>
+        <member name="M:SearchEnginee.Doocument.getPath">
+            <summary>
+            This returns the documents path
+            </summary>
+            <returns>the path to the documents location</returns>
+        </member>
+        <member name="M:SearchEnginee.Doocument.getRankValue">
+            <summary>
+            This returns the document rank value after it must have been matched or ranked with a query
+            </summary>
+            <returns>rank value</returns>
+        </member>
+        <member name="M:SearchEnginee.Doocument.setRankValue(System.Double)">
+            <summary>
+            This sets the document rank value after it must have been matched or ranked with a query
+            </summary>
+            <param name="rankValue">rank value</param>
+        </member>
+        <member name="M:SearchEnginee.Doocument.getFileName">
+            <summary>
+            This returns the file name of the document
+            </summary>
+            <returns>file name</returns>
+        </member>
+        <member name="M:SearchEnginee.Doocument.getText">
+            <summary>
+            This returns the contents or text of the document
+            </summary>
+            <returns>Content or text of the document</returns>
+        </member>
+        <member name="T:SearchEnginee.FileReader">
+            <summary>
+            Class contains the Api's for reading various extensions
+            Returns the output as a string to be added to the dictionary of the inverted index
+            All Api's are to parse the inputs as strings
+            The following extensions are tested (.pptx, .ppt, .xml,.doc, .docx,.html,.xlxs,.xls, .txt)
+            No other types are allowed
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadPdf(System.String)">
+            <summary>
+            Loops through the pages of the pdf documents 
+            Extracts the text from each document and stores in the variable text
+            reader buffer must be closed to avoid data corruption
+            Requires: The path that contains the pdf file must not be empty
+            Ensures: The buffer reader must be closed to avoid data corruption
+            </summary>
+            <param name="path"></param>
+            <returns>text</returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadDoc(System.String)">
+            <summary>
+            Uses a string builder buffer to read the text from the .doc document
+            Creates an instance of the word document 
+            Opens the documents using the Document keyword
+            Counts the number of words in the documnents
+            loops through the number of words and appends the text to the buffer
+            convert the buffer string to immutable strings
+            ensures: Path for reading document must not be empty
+            requires: Ensures the document is closed to eliminate data corruption
+            </summary>
+            <param name="path"></param>
+            <returns> DocText </returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadDocx(System.String)">
+            <summary>
+            Uses the buffer class to read the documents in the .docx document
+            An instance of the textextractor class is created to read the documents in the path
+            The extracttext method is used to get the text and store in the 
+            </summary>
+            <param name="path"></param>
+            <returns>DocxText</returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadPpt(System.String)">
+            <summary>
+            Creates a buffer for powerpoint data to read the powerpoint slides
+            Calls a method "GetAllTextInSlide". This method reads the .ppt documents from the path
+            Loops through the textand appends the data to the buffer
+            Converts the buffer to string
+            requires: Path for powerpoint documents must not be empty
+            ensures: a string must be returned.
+            </summary>
+            <param name="path"></param>
+            <returns>ppts</returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadPpts(System.String)">
+            <summary>
+            Creates a buffer for powerpoint data to read the powerpoint slides
+            Calls a method "GetAllTextInSlide". This method reads the .ppt documents from the path
+            Loops through the textand appends the data to the buffer
+            Converts the buffer to string
+            requires: Path for powerpoint documents must not be empty
+            ensures: a string must be returned.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadXls(System.String)">
+            <summary>
+            Creates a buffer using the stringbuilder class
+            It uses the microsoft interop class to read excel files
+            </summary>
+            <param name="path"></param>
+            <returns>xlsData</returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadXlsx(System.String)">
+            <summary>
+            This method reads a excel file
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadHtml(System.String)">
+            <summary>
+            This method reads an html file
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SearchEnginee.FileReader.ReadXml(System.String)">
+            <summary>
+            This method reads an xml file
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="F:SearchEnginee.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchEnginee.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SearchEnginee.Form2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Form2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchEnginee.Form2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:SearchEnginee.Indexer">
+            <summary>
+            This class houses the indexer and the operations that can be performed on it.
+            Operations like adding to the indexer and removing from the indexer
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Indexer.#ctor">
+            <summary>
+            Initializes the indexer with an empty dictionary
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Indexer.getDictionary">
+            <summary>
+            Returns the indexer which is in form of a dictionary
+            </summary>
+            <returns>the indexer</returns>
+        </member>
+        <member name="M:SearchEnginee.Indexer.add(SearchEnginee.Doocument)">
+            <summary>
+            Adds a document to the indexer
+            </summary>
+            <param name="document">Document to be indexed or added to the indexer</param>
+        </member>
+        <member name="M:SearchEnginee.Indexer.remove(System.Int32)">
+            <summary>
+            Removes a document from the indexer by removing all of the id of that document contained on the indexer
+            </summary>
+            <param name="id">the id of the document to be removed from the indexer</param>
+        </member>
+        <member name="M:SearchEnginee.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:SearchEnginee.Ranker">
+            <summary>
+            This class ranks a list of documents on the indexer according to a query
+            It gives each document present a rank value which tells the order of relevance or closeness
+            to the specified query
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Ranker.#ctor">
+            <summary>
+            Initializes the indexer
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Ranker.Rank(System.String)">
+            <summary>
+            This methods performs the main function of ranking the documents
+            It collects the query and uses it get the rank value of each document
+            </summary>
+            <param name="query"></param>
+        </member>
+        <member name="T:SearchEnginee.Sort">
+            <summary>
+            This class sorts a list of documents using their rank values
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Sort.mergeSort(System.Collections.Generic.List{SearchEnginee.Doocument},SearchEnginee.Order,System.UInt32,System.UInt32)">
+            <summary>
+            This method sorts portions and the entire passed array in ascending or descending order
+            </summary>
+            <param name="array">List of documents to be sorted in ascending or descending order</param>
+            <param name="order">Enumerator that specifies if sorting is to be in ascending or descending</param>
+            <param name="startIndex">An unsigned integer that indicates the first index to start sorting</param>
+            <param name="endIndex">An unsigned integer that indicates the last index to be sorted</param>
+        </member>
+        <member name="M:SearchEnginee.Sort.merge(System.Collections.Generic.List{SearchEnginee.Doocument},SearchEnginee.Order,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            This method merges/arranges the passed array in the specified order
+            </summary>
+            <param name="array">The array to be merged</param>
+            <param name="order">Enumerator that specifies if sorting is to be in ascending or descending</param>
+            <param name="start">An unsigned integer that indicates the first index of the first part</param>
+            <param name="mid">An unsigned integer that indicates the last index of the first part</param>
+            <param name="end">An unsigned integer that indicates the last index of the second part</param>
+        </member>
+        <member name="M:SearchEnginee.Sort.clone(System.Collections.Generic.List{SearchEnginee.Doocument})">
+            <summary>
+            This method creates a copy of the passed list of documents
+            </summary>
+            <param name="array">List to be cloned/duplicated</param>
+            <returns>Cloned list</returns>
+        </member>
+        <member name="T:SearchEnginee.Order">
+            <summary>
+            An enumerator that has the values ascending and descending
+            </summary>
+        </member>
+        <member name="T:SearchEnginee.StopwordExtractor">
+            <summary>
+            This class removes stopwords from a string array
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StopwordExtractor.work(System.String[])">
+            <summary>
+            This method performs the main function of removing the stopwords from an array of string
+            </summary>
+            <param name="tokenizedString">array of string</param>
+            <returns>List free from stopwords</returns>
+        </member>
+        <member name="M:SearchEnginee.StopwordExtractor.isStopWord(System.String)">
+            <summary>
+            Checks if a particular token or word is a stopword
+            </summary>
+            <param name="token">word to be checked if its a stopword</param>
+            <returns>true if word is a stopword, false if its not</returns>
+        </member>
+        <member name="T:SearchEnginee.Storage">
+            <summary>
+            This class models the repository
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Storage.initializeSavedInfo">
+            <summary>
+            Retrieves the repository details  saved to a file if available
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Storage.saveStorageDetails">
+            <summary>
+            This method saves the storage details needed t be persistent to a file
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Storage.getStorageDetails">
+            <summary>
+            THis method returns the details of this repository
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SearchEnginee.Storage.getPaths(System.String)">
+            <summary>
+            This method get all the paths currently in the repository
+            </summary>
+            <param name="directory">the default name oft he repository</param>
+            <returns>the paths in the repository</returns>
+        </member>
+        <member name="M:SearchEnginee.Storage.getSavedPaths">
+            <summary>
+            This method gets a list of the saved paths
+            </summary>
+            <returns>List of saved paths</returns>
+        </member>
+        <member name="M:SearchEnginee.Storage.getAddedPaths">
+            <summary>
+            This method gets a list of added paths to the repository
+            </summary>
+            <returns>List of added paths</returns>
+        </member>
+        <member name="M:SearchEnginee.Storage.getRemovedDocuments">
+            <summary>
+            This method gets the list of removed documents from the repository
+            </summary>
+            <returns>List of documents removed from the repository</returns>
+        </member>
+        <member name="M:SearchEnginee.Storage.getDocumentByPath(System.String)">
+            <summary>
+            This method gets the Document object by specifying its path
+            </summary>
+            <param name="path">the path of the document to be gotten</param>
+            <returns>the document associated to that path</returns>
+        </member>
+        <member name="T:SearchEnginee.StorageDetails">
+            <summary>
+            This class contains details of the repository that needs to be saved or stored
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.#ctor(System.String)">
+            <summary>
+            Initializes the details of this class
+            </summary>
+            <param name="defaultFolderPath">Name of the repository</param>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.getNumberOfDocument">
+            <summary>
+            Returns the number of documents contained in the repository
+            </summary>
+            <returns>Number of documents in the repository</returns>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.incrNumberOfDocument">
+            <summary>
+            Increments the number of documents contained in the repository
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.decrNumberOfDocument">
+            <summary>
+            Decrements the number of documents contained in the repository
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.getAndIncrLastDocumentID">
+            <summary>
+            Increments the last document ID and returns it
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.getLastAccessTime">
+            <summary>
+            Returns the last time the repository was accessed
+            </summary>
+            <returns>Last access time of the repository</returns>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.getIndexer">
+            <summary>
+            Returns the current indexer
+            </summary>
+            <returns>Indexer</returns>
+        </member>
+        <member name="M:SearchEnginee.StorageDetails.getDocumentList">
+            <summary>
+            Returns the list of documents contained in the repository
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SearchEnginee.StorageDetailsSR">
+            <summary>
+            This class saves,retrieves and closes an object of StorageDetails to a file
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetailsSR.#ctor">
+            <summary>
+            Initializes the file name
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetailsSR.Save(SearchEnginee.StorageDetails)">
+            <summary>
+            Saves an object of StorageDetails to a file
+            </summary>
+            <param name="storageDetails">Object of StorageDetails</param>
+        </member>
+        <member name="M:SearchEnginee.StorageDetailsSR.Exit">
+            <summary>
+            Closes the file being used
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.StorageDetailsSR.Retrieve">
+            <summary>
+            Retrieves the saved object in the file
+            </summary>
+            <returns>Saved information</returns>
+        </member>
+        <member name="T:SearchEnginee.Tokenizer">
+            <summary>
+            This class splits a string with some delimiter characters
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.Tokenizer.tokenizeString(System.String)">
+            <summary>
+            This method splits a given string with some delimiter characters
+            and returns an array of the splitted string
+            </summary>
+            <param name="text">string to be splitted</param>
+            <returns>an array of the splitted string</returns>
+        </member>
+        <member name="T:SearchEnginee.UpdateThread">
+            <summary>
+            This class updates the indexer when a document is added to the repository
+            and when a document is removed from it
+            </summary>
+        </member>
+        <member name="M:SearchEnginee.UpdateThread.#ctor(System.Boolean)">
+            <summary>
+            Initializes the sleep time of the thread to be run and the status
+            When status is true, the first time the thread runs, it sleeps for a duration of the sleeptime
+            When status is false, the first time the thread runs, it does not sleep
+            </summary>
+            <param name="status"></param>
+        </member>
+        <member name="M:SearchEnginee.UpdateThread.run">
+            <summary>
+            Performs the main function of getting the newly added documents and add them to the indexer,
+            and also get the removed documents and remove them from the indexer
+            </summary>
+        </member>
+        <member name="T:SearchEnginee.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SearchEnginee.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SearchEnginee.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>
